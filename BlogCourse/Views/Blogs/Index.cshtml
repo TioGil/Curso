@@ -1,0 +1,33 @@
+﻿@model IEnumerable<BlogCourse.Models.Blog>
+
+@{
+    ViewBag.Title = "Blogs";
+}
+
+<h2>Listado de Blogs</h2>
+
+<p>
+    @Html.ActionLink("Crear nuevo Blog", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>Acciones funciones</th>
+    </tr>
+
+@foreach (var blog in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink(blog.Name, "Blog", new { id = blog.Id }) 
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id= blog.Id }) |
+            @Html.ActionLink("Detalles", "Details", new { id= blog.Id }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id= blog.Id })
+        </td>
+    </tr>
+}
+
+</table>
